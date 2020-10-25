@@ -6,7 +6,13 @@ jobs:
       - image: cimg/python:3.7.7
     steps:
       - checkout
-      - run: pre-commit run --all-files
+      - run:
+          name: install dependencies
+          command: pipenv install
+      - run:
+          name: run pre-commit
+          command: pre-commit run --all-files
+
 
 workflows:
   test_and_build:
