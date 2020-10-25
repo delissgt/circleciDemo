@@ -11,9 +11,7 @@ jobs:
           command: pipenv install
       - run:
           name: run pre-commit
-          command: |
-            pipenv shell
-            pre-commit run --all-files
+          command: pipenv run pre-commit run --all-files
 
 
 workflows:
