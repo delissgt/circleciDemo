@@ -13,8 +13,18 @@ jobs:
           name: run pre-commit
           command: pipenv run pre-commit run --all-files
 
+  job_build_image:
+    docker:
+      - image: cimg/python:3.7.7
+    steps:
+      - checkout
+      - run: docker build -t demo:latest .
+
 
 workflows:
   test_and_build:
     jobs:
       - job_pre-commit
+      - job_build_image:
+          requires:
+            - job_pre-commit
