@@ -15,7 +15,7 @@ jobs:
 
   job_build_image:
     docker:
-      - image: cimg/python:3.7.7
+      - image: circleci/python:3.7.7
     steps:
       - checkout
       - run: docker build -t demo:latest .
