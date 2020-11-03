@@ -18,7 +18,7 @@ jobs:
       - save_cache:
           paths:
             - ~/.cache
-        key: dependencies-{{ checksum "Pipfile.lock"}}
+          key: dependencies-{{ checksum "Pipfile.lock"}}
 
   job_build_image:
     docker:
