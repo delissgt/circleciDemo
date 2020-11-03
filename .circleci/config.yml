@@ -15,7 +15,7 @@ jobs:
       - run:
           name: run pre-commit
           command: pipenv run pre-commit run --all-files
-      -save_cache:
+      - save_cache:
         paths:
           - ~/.cache
         key: dependencies-{{ checksum "Pipfile.lock"}}
