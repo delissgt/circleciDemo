@@ -6,6 +6,7 @@ jobs:
       - image: cimg/python:3.7.7
     steps:
       - checkout
+#      -  restore cache and finally save it
       - restore_cache:
           keys:
             - dependencies-{{ checksum "Pipfile.lock"}}
