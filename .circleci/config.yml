@@ -6,12 +6,19 @@ jobs:
       - image: cimg/python:3.7.7
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - dependencies-{{ checksum "Pipfile.lock"}}
       - run:
           name: install dependencies
           command: pipenv install
       - run:
           name: run pre-commit
           command: pipenv run pre-commit run --all-files
+      -save_cache:
+        paths:
+          - ~/.cache
+        key: dependencies-{{ checksum "Pipfile.lock"}}
 
   job_build_image:
     docker:
