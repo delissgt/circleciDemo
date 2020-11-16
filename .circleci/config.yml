@@ -20,12 +20,17 @@ jobs:
           paths:
             - ~/.cache
           key: dependencies-{{ checksum "Pipfile.lock"}}
+      - persist_to_workspace:
+          root: /home/circleci/
+          paths: project
 
   job_build_image:
     docker:
       - image: circleci/python:3.7.7
     steps:
-      - checkout
+#      - checkout
+      - attach_workspace:
+          at: /home/circleci/
       - setup_remote_docker:
           version: 19.03.13
       - run:
